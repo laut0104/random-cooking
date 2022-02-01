@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Detail
+{% endblock %}
+
+{% block main %}
+    <h1>{{menu[0]['title']}}のレシピ</h1>
+    <table class = "table table-striped" id = "detail_table">
+    <h3 class="detail">材料({{menu[0]['number']}}人前)</h3>
+        <thead>
+            <tr>
+                <th>食材</th>
+                <th>分量</th>
+            </tr>
+        </thead>
+        {% for food in foods %}
+            <tr>
+                <td>{{ food["stuff"] }}</td>
+                <td>{{ food["quantity"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h3 class="detail">作り方</h3>
+    <div class="row">
+        {% for flow in flows %}
+            {% if loop.index != 1 %}
+                <div class="col-1" id = "arrow">
+                    <img class="figure" id = "arrow" src="/static/images/arrow.jpg"  alt="右寄せの写真" width="100">
+                </div>
+            {% endif %}
+            <div class="col-sm-3 col-xs-5">
+                <h4 id = "flow">手順{{loop.index}}</h4>
+                <article>
+                   <p>
+                       {{flow}}
+                   </p>
+                </article>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

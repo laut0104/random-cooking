@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipe-Register
+{% endblock %}
+
+{% block main %}
+    <form action="/recipe_register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="title" placeholder="料理名" type="text">
+        </div>
+         <div class="form-group">
+            <input  class="form-control" id = "number" name="number" placeholder="人数" type="number" step="1">人前
+
+        </div>
+        <div class = "form-group" id = "stuff-quantity" data-formno = "0">
+            <input type="text" class="form-control" id = "stuff" name="stuffs" placeholder="食材">
+            <input type="text" class="form-control" id = "quantity" name="quantitys" placeholder="分量">
+        </div>
+        <div class = "form-group">
+            <input type="button" value="食材欄追加" class="add pluralBtn">
+            <input type="button" value="食材欄削除" class="del pluralBtn">
+        </div>
+
+        <div class = "form-group" id = "flow" data-formno = "0">
+            <textarea id = "bigtext" class="form-control"  name="flows" placeholder="手順1" wrap = "hard"></textarea>
+        </div>
+        <div class = "form-group">
+            <input type="button" value="手順欄追加" class="add1 pluralBtn">
+            <input type="button" value="手順欄削除" class="del1 pluralBtn">
+        </div>
+
+        <button class="btn btn-primary" type="submit">レシピ登録</button>
+
+    </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).on("click", ".add", function() {
+               var clone =  $('.form-group#stuff-quantity:last').clone(true);
+               clone.insertAfter($('.form-group#stuff-quantity:last'));
+            });
+            $(document).on("click", ".del", function() {
+                var target = $('.form-group#stuff-quantity');
+                if (target.length > 1) {
+                    $('.form-group#stuff-quantity:last').remove();
+                }
+            });
+
+            $(document).on("click", ".add1", function() {
+               var clone =  $('.form-group#flow:last').clone(true);
+               var cloneno = clone.attr('data-formno');
+               var cloneno2 = parseInt(cloneno) + 1;
+               var cloneno3 = cloneno2 + 1;
+               clone.attr('data-formno',cloneno2);
+
+               var namecode = clone.find('textarea#bigtext').attr('placeholder');
+               namecode = namecode.replace(/手順[0-9]{1,2}/g,'手順' + cloneno3);
+               console.log("test");
+               clone.find('textarea#bigtext').attr('placeholder', namecode);
+
+
+               clone.insertAfter($('.form-group#flow:last'));
+            });
+            $(document).on("click", ".del1", function() {
+                var target = $('.form-group#flow');
+                if (target.length > 1) {
+                    $('.form-group#flow:last').remove();
+                }
+            });
+        </script>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipe-Index
+{% endblock %}
+
+
+
+{% block main %}
+    <table class = "table table-striped" id ="menutable">
+            <thead>
+                <tr>
+                    <th>料理名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TODO: Loop through the database entries to display them in this table -->
+                {% for title in titles %}
+                    <tr>
+                        <td id = {{ title["title"] }}><a href="{{url_for('detail_menu', title = title["title"])}}">{{ title["title"] }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+    </table>
+    <div class="form-group">
+        <button class="btn btn-primary" class = "decision" onclick = "Decision();">メニュー決定</button>
+    </div>
+    <!-- モーダルエリアここから -->
+    <section id="modalArea" class="modalArea">
+      <div id="modalBg" class="modalBg"></div>
+      <div class="modalWrapper">
+        <div class="modalContents">
+          <h1>今日のメニュー</h1>
+          <p id = "todayMenu"></p>
+        　<form action="/detail" method="post">
+              <div class = "form-group">
+                　<button class="btn btn-primary" name = "menu" id = "yes" type="submit" value= "">決定</button>
+                  <button class="btn btn-primary" id = "no"  type = "button" onclick = "Decision();">もう一度</button>
+              </div>
+        　</form>
+        </div>
+        <div id="closeModal" class="closeModal">
+          ×
+        </div>
+      </div>
+    </section>
+    <!-- モーダルエリアここまで -->
+
+    <!-- ↓body閉じタグ直前でjQueryを読み込む -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            var menu = 1;
+            var table;
+            function Decision() {
+             table = document.getElementById('menutable');
+             menu = Math.floor(Math.random() * (table.rows.length - 1 - 1+ 1) + 1);
+             console.log(menu);
+             var elem = document.getElementById("todayMenu");
+             elem.innerHTML = table.rows[menu].innerText+"はどうですか?";
+             document.getElementById( "yes" ).value = table.rows[menu].innerText ;
+             $('#modalArea').fadeIn();
+
+             //window.confirm("今日のメニュー:"+table.rows[menu].innerText+"はどうですか?");
+           }
+          $('#closeModal , #modalBg').click(function(){
+            $('#modalArea').fadeOut();
+          });
+          function Yes(){
+            console.log(menu);
+
+          }
+        </script>
+{% endblock %}

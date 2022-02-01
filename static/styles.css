@@ -1,0 +1,197 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* Center contents */
+    text-align: center;
+}
+
+#number{
+   width: 100px;
+}
+
+#flow{
+    color: red;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+table {
+    background-color: transparent;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+
+}
+
+#detail_table td, th {
+    text-align: center;
+}
+
+.detail{
+    text-align: left;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+main table {
+    text-align: left;
+}
+table {
+    border-collapse: collapse;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tfoot {
+    display: table-footer-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tbody tr:nth-of-type(odd) {
+    background-color: rgb(179, 208, 255, 0.3)
+}
+main tfoot {
+    font-weight: bold;
+}
+
+#bigtext {
+    height: 100px;
+}
+
+/* モーダルCSS */
+.modalArea {
+  display: none;
+  position: fixed;
+  z-index: 10; /*サイトによってここの数値は調整 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 500px;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+
+/* 以下ボタンスタイル */
+button {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #282828;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#no {
+    background-color: red;
+    border-color: red;
+}
+
+#openModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+
+article{
+    word-break : break-all;
+    text-align: left;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    border: solid 3px #000000;
+}
+
+.article p{
+    margin: 0;
+    padding: 0;
+}
+
+#arrow{
+    margin-top: auto;
+    margin-bottom: auto;
+}
